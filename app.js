@@ -32,7 +32,7 @@ app.get("/restaurants/:restaurant_id", (req, res) => {
   const restaurant = restaurantList.results.find((item) => {
     return item.id.toString() === req.params.restaurant_id;
   });
-  res.render("show", { restaurant: restaurant });
+  res.render("show", { restaurant });
 });
 
 // 搜尋
@@ -48,7 +48,7 @@ app.get("/search", (req, res) => {
   if (restaurants.length === 0) {
     res.render("notFound", { keyword });
   } else {
-    res.render("index", { restaurants: restaurants, keyword: keyword });
+    res.render("index", { restaurants, keyword });
   }
 });
 
