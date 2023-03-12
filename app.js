@@ -45,7 +45,11 @@ app.get("/search", (req, res) => {
       index.category.toLowerCase().includes(keyword)
     );
   });
-  res.render("index", { restaurants: restaurants, keyword: keyword });
+  if (restaurants.length === 0) {
+    res.render("notFound", { keyword });
+  } else {
+    res.render("index", { restaurants: restaurants, keyword: keyword });
+  }
 });
 
 // 監聽
