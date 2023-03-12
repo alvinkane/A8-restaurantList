@@ -18,6 +18,11 @@ app.set("view engine", "handlebars");
 // 建立路由
 // 根目錄
 app.get("/", (req, res) => {
+  // 列出英文名字，如果跟中文名重複為0，不重複為1
+  restaurantList.results.forEach((item) => {
+    item.isSameName =
+      item.name.toLowerCase() === item.name_en.toLowerCase() ? 0 : 1;
+  });
   res.render("index", { restaurants: restaurantList.results });
 });
 
@@ -27,13 +32,12 @@ app.get("/restaurants/:restaurant_id", (req, res) => {
   const restaurant = restaurantList.results.find((item) => {
     return item.id.toString() === req.params.restaurant_id;
   });
-  console.log(restaurant);
   res.render("show", { restaurant: restaurant });
 });
 
 // 搜尋
 app.get("/search", (req, res) => {
-  const keyword = req.query.keyword.toLowerCase();
+  const keyword = req.query.keyword.toLowerCase().trim();
   const restaurants = restaurantList.results.filter((index) => {
     return (
       index.name.toLowerCase().includes(keyword) ||
