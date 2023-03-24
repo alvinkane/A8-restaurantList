@@ -168,6 +168,15 @@ app.post("/restaurants/:restaurant_id/edit", (req, res) => {
     .catch((error) => console.log(error));
 });
 
+// 刪除資料
+app.post("/restaurants/:restaurant_id/delete", (req, res) => {
+  const id = req.params.restaurant_id;
+  return Restaurant.findById(id)
+    .then((restaurant) => restaurant.remove())
+    .then(() => res.redirect("/"))
+    .catch((error) => console.log(error));
+});
+
 // 監聽
 app.listen(port, (req, res) => {
   console.log(`This is listening on http://localhost:${port}`);
