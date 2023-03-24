@@ -64,20 +64,6 @@ app.get("/", (req, res) => {
   // res.render("index", { restaurants: restaurantList.results });
 });
 
-// 詳細資料
-app.get("/restaurants/:restaurant_id", (req, res) => {
-  const id = req.params.restaurant_id;
-  // 找對應id的餐廳
-  return Restaurant.findById(id)
-    .lean()
-    .then((restaurant) => res.render("show", { restaurant }))
-    .catch((error) => console.log(error));
-  // const restaurant = restaurantList.results.find((item) => {
-  //   return item.id.toString() === req.params.restaurant_id;
-  // });
-  // res.render("show", { restaurant });
-});
-
 // // 搜尋
 // app.get("/search", (req, res) => {
 //   const keyword = req.query.keyword.toLowerCase().trim();
@@ -126,6 +112,20 @@ app.post("/restaurants", (req, res) => {
   })
     .then(() => res.redirect("/"))
     .catch((error) => console.log(error));
+});
+
+// 詳細資料
+app.get("/restaurants/:restaurant_id", (req, res) => {
+  const id = req.params.restaurant_id;
+  // 找對應id的餐廳
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render("show", { restaurant }))
+    .catch((error) => console.log(error));
+  // const restaurant = restaurantList.results.find((item) => {
+  //   return item.id.toString() === req.params.restaurant_id;
+  // });
+  // res.render("show", { restaurant });
 });
 
 // 修改資料頁面
