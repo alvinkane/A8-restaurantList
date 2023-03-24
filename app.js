@@ -9,6 +9,9 @@ const port = 3000;
 // 連線資料庫
 const mongoose = require("mongoose");
 
+// 載入model
+const Restaurant = require("./models/restaurant");
+
 // 僅在非正式環境使用dotenv
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -43,12 +46,20 @@ app.set("view engine", "handlebars");
 // 建立路由
 // 根目錄
 app.get("/", (req, res) => {
-  // 列出英文名字，如果跟中文名重複為0，不重複為1
-  restaurantList.results.forEach((item) => {
-    item.isSameName =
-      item.name.toLowerCase() === item.name_en.toLowerCase() ? 0 : 1;
-  });
-  res.render("index", { restaurants: restaurantList.results });
+  Restaurant.find()
+    .lean()
+    .then((restaurants) => {
+      res.render("index", { restaurants });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  // // 列出英文名字，如果跟中文名重複為0，不重複為1
+  // restaurantList.results.forEach((item) => {
+  //   item.isSameName =
+  //     item.name.toLowerCase() === item.name_en.toLowerCase() ? 0 : 1;
+  // });
+  // res.render("index", { restaurants: restaurantList.results });
 });
 
 // 詳細資料
