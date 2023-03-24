@@ -65,13 +65,18 @@ app.get("/", (req, res) => {
 });
 
 // 詳細資料
-// app.get("/restaurants/:restaurant_id", (req, res) => {
-//   // 找對應id的餐廳
-//   const restaurant = restaurantList.results.find((item) => {
-//     return item.id.toString() === req.params.restaurant_id;
-//   });
-//   res.render("show", { restaurant });
-// });
+app.get("/restaurants/:restaurant_id", (req, res) => {
+  const id = req.params.restaurant_id;
+  // 找對應id的餐廳
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render("show", { restaurant }))
+    .catch((error) => console.log(error));
+  // const restaurant = restaurantList.results.find((item) => {
+  //   return item.id.toString() === req.params.restaurant_id;
+  // });
+  // res.render("show", { restaurant });
+});
 
 // // 搜尋
 // app.get("/search", (req, res) => {
