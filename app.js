@@ -37,11 +37,13 @@ db.once("open", () => {
 // 設定靜態網站
 app.use(express.static("public"));
 // 導入餐廳清單
-const restaurantList = require("./restaurant.json");
+// const restaurantList = require("./restaurant.json");
 
 // 設定樣板引擎
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+// 設定 body-parser
+app.use(express.urlencoded({ extended: true }));
 
 // 建立路由
 // 根目錄
@@ -63,29 +65,34 @@ app.get("/", (req, res) => {
 });
 
 // 詳細資料
-app.get("/restaurants/:restaurant_id", (req, res) => {
-  // 找對應id的餐廳
-  const restaurant = restaurantList.results.find((item) => {
-    return item.id.toString() === req.params.restaurant_id;
-  });
-  res.render("show", { restaurant });
-});
+// app.get("/restaurants/:restaurant_id", (req, res) => {
+//   // 找對應id的餐廳
+//   const restaurant = restaurantList.results.find((item) => {
+//     return item.id.toString() === req.params.restaurant_id;
+//   });
+//   res.render("show", { restaurant });
+// });
 
-// 搜尋
-app.get("/search", (req, res) => {
-  const keyword = req.query.keyword.toLowerCase().trim();
-  const restaurants = restaurantList.results.filter((index) => {
-    return (
-      index.name.toLowerCase().includes(keyword) ||
-      index.name_en.toLowerCase().includes(keyword) ||
-      index.category.toLowerCase().includes(keyword)
-    );
-  });
-  if (restaurants.length === 0) {
-    res.render("notFound", { keyword });
-  } else {
-    res.render("index", { restaurants, keyword });
-  }
+// // 搜尋
+// app.get("/search", (req, res) => {
+//   const keyword = req.query.keyword.toLowerCase().trim();
+//   const restaurants = restaurantList.results.filter((index) => {
+//     return (
+//       index.name.toLowerCase().includes(keyword) ||
+//       index.name_en.toLowerCase().includes(keyword) ||
+//       index.category.toLowerCase().includes(keyword)
+//     );
+//   });
+//   if (restaurants.length === 0) {
+//     res.render("notFound", { keyword });
+//   } else {
+//     res.render("index", { restaurants, keyword });
+//   }
+// });
+
+// 新增餐廳
+app.get("/restaurants/new", (req, res) => {
+  return res.render("new");
 });
 
 // 監聽

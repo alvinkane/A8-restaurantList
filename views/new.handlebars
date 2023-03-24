@@ -1,0 +1,60 @@
+<div class="container">
+  <form action="/restaurants" method="POST">
+    <div class="mb-2">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" />
+    </div>
+    <div class="mb-2">
+      <label for="name_en" class="form-label">English Name</label>
+      <input type="text" class="form-control" id="name_en" name="name_en" />
+    </div>
+    <div class="mb-2">
+      <label for="category" class="form-label">Category</label>
+      <input type="text" class="form-control" id="category" name="category" />
+    </div>
+    <div class="mb-2">
+      <label for="image" class="form-label">Image URL</label>
+      <input type="text" class="form-control" id="image" name="image" />
+    </div>
+    <div class="mb-2">
+      <label for="location" class="form-label">Location</label>
+      <input type="text" class="form-control" id="location" name="location" />
+    </div>
+    <div class="mb-2">
+      <label for="phone" class="form-label">Phone Number</label>
+      <input type="text" class="form-control" id="phone" name="phone" />
+    </div>
+    <div class="mb-2">
+      <label for="google_map" class="form-label">Google Map URL</label>
+      <input
+        type="text"
+        class="form-control"
+        id="google_map"
+        name="google_map"
+      />
+    </div>
+    <div class="mb-2">
+      <label for="rating" class="form-label">Rating</label>
+      <input
+        type="number"
+        class="form-control"
+        id="rating"
+        name="rating"
+        min="0"
+        max="5"
+      />
+    </div>
+    <div class="mb-2">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        name="description"
+        class="form-control"
+        id="description"
+        cols="30"
+        rows="10"
+      ></textarea>
+    </div>
+
+    <button type="submit">Create</button>
+  </form>
+</div>
