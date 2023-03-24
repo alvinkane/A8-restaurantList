@@ -128,6 +128,17 @@ app.post("/restaurants", (req, res) => {
     .catch((error) => console.log(error));
 });
 
+// 修改資料頁面
+app.get("/restaurants/:restaurant_id/edit", (req, res) => {
+  const id = req.params.restaurant_id;
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render("edit", { restaurant }))
+    .catch((error) => conmsole.log(error));
+});
+
+//
+
 // 監聽
 app.listen(port, (req, res) => {
   console.log(`This is listening on http://localhost:${port}`);
