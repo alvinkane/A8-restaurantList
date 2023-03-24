@@ -90,9 +90,37 @@ app.get("/", (req, res) => {
 //   }
 // });
 
-// 新增餐廳
+// 餐廳新增頁面
 app.get("/restaurants/new", (req, res) => {
   return res.render("new");
+});
+
+// 資料庫新增資料
+app.post("/restaurants", (req, res) => {
+  const {
+    name,
+    name_en,
+    category,
+    image,
+    location,
+    phone,
+    google_map,
+    rating,
+    description,
+  } = req.body;
+  Restaurant.create({
+    name,
+    name_en,
+    category,
+    image,
+    location,
+    phone,
+    google_map,
+    rating,
+    description,
+  })
+    .then(() => res.redirect("/"))
+    .catch((error) => console.log(error));
 });
 
 // 監聽
