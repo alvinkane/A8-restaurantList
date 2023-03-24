@@ -137,7 +137,36 @@ app.get("/restaurants/:restaurant_id/edit", (req, res) => {
     .catch((error) => conmsole.log(error));
 });
 
-//
+// 修改資料庫資料
+app.post("/restaurants/:restaurant_id/edit", (req, res) => {
+  const id = req.params.restaurant_id;
+  const {
+    name,
+    name_en,
+    category,
+    image,
+    location,
+    phone,
+    google_map,
+    rating,
+    description,
+  } = req.body;
+  return Restaurant.findById(id)
+    .then((restaurant) => {
+      restaurant.name = name;
+      restaurant.name_en = name_en;
+      restaurant.category = category;
+      restaurant.image = image;
+      restaurant.location = location;
+      restaurant.phone = phone;
+      restaurant.google_map = google_map;
+      restaurant.rating = rating;
+      restaurant.description = description;
+      return restaurant.save();
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch((error) => console.log(error));
+});
 
 // 監聽
 app.listen(port, (req, res) => {
