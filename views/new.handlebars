@@ -1,8 +1,10 @@
 <div class="container">
-  <form action="/restaurants" method="POST">
+  <form action="/restaurants" method="POST" id="new-form">
     <div class="mb-2">
       <label for="name" class="form-label">Name</label>
-      <input type="text" class="form-control" id="name" name="name" />
+      <input type="text" class="form-control" id="name" name="name" required />
+      <div class="valid-feedback"></div>
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-2">
       <label for="name_en" class="form-label">English Name</label>
@@ -10,11 +12,27 @@
     </div>
     <div class="mb-2">
       <label for="category" class="form-label">Category</label>
-      <input type="text" class="form-control" id="category" name="category" />
+      <input
+        type="text"
+        class="form-control"
+        id="category"
+        name="category"
+        required
+      />
+      <div class="valid-feedback"></div>
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-2">
       <label for="image" class="form-label">Image URL</label>
-      <input type="text" class="form-control" id="image" name="image" />
+      <input
+        type="text"
+        class="form-control"
+        id="image"
+        name="image"
+        required
+      />
+      <div class="valid-feedback"></div>
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-2">
       <label for="location" class="form-label">Location</label>
@@ -42,7 +60,10 @@
         name="rating"
         min="0"
         max="5"
+        required
       />
+      <div class="valid-feedback"></div>
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-2">
       <label for="description" class="form-label">Description</label>
@@ -54,7 +75,13 @@
         rows="10"
       ></textarea>
     </div>
-
-    <button type="submit">Create</button>
+    <button type="submit" id="create-button">Create</button>
   </form>
 </div>
+
+<script>
+  const submitButton = document.querySelector("#create-button"); const form =
+  document.querySelector("#new-form"); submitButton.addEventListener("click",
+  function onSubmitButtonClicked(event) { console.log(event.target)
+  form.classList.add("was-validated"); });
+</script>

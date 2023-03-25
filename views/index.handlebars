@@ -25,11 +25,6 @@
   </div>
 </div>
 
-{{! create }}
-<div class="container">
-  <a href="/restaurants/new">Create</a>
-</div>
-
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
@@ -56,12 +51,9 @@
             <div class="card-footer p-1 align-self-end">
               <a
                 href="/restaurants/{{this._id}}/edit"
-                class="text-secondary"
+                class="text-dark"
               >Edit</a>
-              <a
-                href="/restaurants/{{this._id}}"
-                class="text-secondary"
-              >Detail</a>
+              <a href="/restaurants/{{this._id}}" class="text-dark">Detail</a>
               <form
                 action="./restaurants/{{this._id}}/delete"
                 method="POST"
@@ -73,4 +65,12 @@
       </div>
     </div>
   </div>
+</div>
+
+{{! create }}
+<div class="container d-flex justify-content-end">
+  <a
+    href="/restaurants/new"
+    class="text-white border mb-2 p-2 text-decoration-none bg-dark"
+  >Create</a>
 </div>

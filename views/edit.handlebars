@@ -1,5 +1,9 @@
 <div class="container">
-  <form action="/restaurants/{{restaurant._id}}/edit" method="POST">
+  <form
+    action="/restaurants/{{restaurant._id}}/edit"
+    method="POST"
+    id="edit-form"
+  >
     <div class="mb-2">
       <label for="name" class="form-label">Name</label>
       <input
@@ -8,6 +12,7 @@
         id="name"
         name="name"
         value="{{restaurant.name}}"
+        required
       />
     </div>
     <div class="mb-2">
@@ -28,6 +33,7 @@
         id="category"
         name="category"
         value="{{restaurant.category}}"
+        required
       />
     </div>
     <div class="mb-2">
@@ -38,6 +44,7 @@
         id="image"
         name="image"
         value="{{restaurant.image}}"
+        required
       />
     </div>
     <div class="mb-2">
@@ -81,6 +88,7 @@
         max="5"
         step="0.1"
         value="{{restaurant.rating}}"
+        required
       />
     </div>
     <div class="mb-2">
@@ -93,7 +101,14 @@
         rows="10"
       >{{restaurant.description}}</textarea>
     </div>
-    <button type="submit">Edit</button>
+    <button type="submit" id="edit-button">Edit</button>
     <a href="/" class="text-secondary">Back</a>
   </form>
 </div>
+
+<script>
+  const submitButton = document.querySelector("#edit-button"); const form =
+  document.querySelector("#edit-form"); submitButton.addEventListener("click",
+  function onSubmitButtonClicked(event) { console.log(event.target)
+  form.classList.add("was-validated"); });
+</script>
