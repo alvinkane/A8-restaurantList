@@ -1,29 +1,11 @@
-// 載入mongoose
-const mongoose = require("mongoose");
 // 載入model
 const Restaurant = require("../restaurant");
 // 載入json
 const restaurantList = require("../../restaurant.json");
-const restaurant = require("../restaurant");
 
-// 載入dotenv
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-// 與資料庫連線
-mongoose.connect(process.env.MONGODB_URI, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-});
-
-const db = mongoose.connection;
-
-db.on("error", () => {
-  console.log("mongodb error!");
-});
+const db = require("../../config/mongoose");
 
 db.once("open", () => {
-  console.log("mongodb connected!");
   restaurantList.results.forEach((restaurant) => {
     const {
       name,
