@@ -55,7 +55,7 @@
               >Edit</a>
               <a href="/restaurants/{{this._id}}" class="text-dark">Detail</a>
               <form
-                action="./restaurants/{{this._id}}/delete"
+                action="./restaurants/{{this._id}}?_method=DELETE"
                 method="POST"
                 style="display: inline"
               ><button type="submit">Delete</button></form>

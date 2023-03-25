@@ -1,6 +1,6 @@
 <div class="container">
   <form
-    action="/restaurants/{{restaurant._id}}/edit"
+    action="/restaurants/{{restaurant._id}}?_method=PUT"
     method="POST"
     id="edit-form"
   >
@@ -101,7 +101,7 @@
         rows="10"
       >{{restaurant.description}}</textarea>
     </div>
-    <button type="submit" id="edit-button">Edit</button>
+    <button type="submit" id="edit-button">Save</button>
     <a href="/" class="text-secondary">Back</a>
   </form>
 </div>

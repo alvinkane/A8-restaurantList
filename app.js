@@ -9,6 +9,9 @@ const port = 3000;
 // 連線資料庫
 const mongoose = require("mongoose");
 
+// 載入method-override
+const methodOverride = require("method-override");
+
 // 載入model
 const Restaurant = require("./models/restaurant");
 
@@ -44,6 +47,9 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 // 設定 body-parser
 app.use(express.urlencoded({ extended: true }));
+
+// 使用method-override
+app.use(methodOverride("_method"));
 
 // 建立路由
 // 根目錄
@@ -111,7 +117,7 @@ app.get("/restaurants/:restaurant_id/edit", (req, res) => {
 });
 
 // 修改資料庫資料
-app.post("/restaurants/:restaurant_id/edit", (req, res) => {
+app.put("/restaurants/:restaurant_id", (req, res) => {
   const id = req.params.restaurant_id;
   const {
     name,
@@ -142,7 +148,7 @@ app.post("/restaurants/:restaurant_id/edit", (req, res) => {
 });
 
 // 刪除資料
-app.post("/restaurants/:restaurant_id/delete", (req, res) => {
+app.delete("/restaurants/:restaurant_id", (req, res) => {
   const id = req.params.restaurant_id;
   return Restaurant.findById(id)
     .then((restaurant) => restaurant.remove())

@@ -49,6 +49,11 @@
         class="text-secondary"
       >Edit</a>
       <a href="/" class="text-secondary">Back</a>
+      <form
+        action="./restaurants/{{restaurant._id}}?_method=DELETE"
+        method="POST"
+        style="display: inline"
+      ><button type="submit">Delete</button></form>
     </div>
   </div>
 </div>
