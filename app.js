@@ -56,30 +56,7 @@ app.get("/", (req, res) => {
     .catch((error) => {
       console.log(error);
     });
-  // // 列出英文名字，如果跟中文名重複為0，不重複為1
-  // restaurantList.results.forEach((item) => {
-  //   item.isSameName =
-  //     item.name.toLowerCase() === item.name_en.toLowerCase() ? 0 : 1;
-  // });
-  // res.render("index", { restaurants: restaurantList.results });
 });
-
-// // 搜尋
-// app.get("/search", (req, res) => {
-//   const keyword = req.query.keyword.toLowerCase().trim();
-//   const restaurants = restaurantList.results.filter((index) => {
-//     return (
-//       index.name.toLowerCase().includes(keyword) ||
-//       index.name_en.toLowerCase().includes(keyword) ||
-//       index.category.toLowerCase().includes(keyword)
-//     );
-//   });
-//   if (restaurants.length === 0) {
-//     res.render("notFound", { keyword });
-//   } else {
-//     res.render("index", { restaurants, keyword });
-//   }
-// });
 
 // 餐廳新增頁面
 app.get("/restaurants/new", (req, res) => {
@@ -122,10 +99,6 @@ app.get("/restaurants/:restaurant_id", (req, res) => {
     .lean()
     .then((restaurant) => res.render("show", { restaurant }))
     .catch((error) => console.log(error));
-  // const restaurant = restaurantList.results.find((item) => {
-  //   return item.id.toString() === req.params.restaurant_id;
-  // });
-  // res.render("show", { restaurant });
 });
 
 // 修改資料頁面
