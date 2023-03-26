@@ -21,7 +21,9 @@ router.get("/:restaurant_id", (req, res) => {
   // 找對應id的餐廳
   return Restaurant.findById(id)
     .lean()
-    .then((restaurant) => res.render("show", { restaurant }))
+    .then((restaurant) => {
+      res.render("show", { restaurant });
+    })
     .catch((error) => console.log(error));
 });
 

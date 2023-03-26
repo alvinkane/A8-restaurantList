@@ -3,8 +3,6 @@
     <div class="mb-2">
       <label for="name" class="form-label">Name</label>
       <input type="text" class="form-control" id="name" name="name" required />
-      <div class="valid-feedback"></div>
-      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-2">
       <label for="name_en" class="form-label">English Name</label>
@@ -28,20 +26,10 @@
         <option>日本料理</option>
         <option>義式餐廳</option>
       </datalist>
-      <div class="valid-feedback"></div>
-      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-2">
       <label for="image" class="form-label">Image URL</label>
-      <input
-        type="text"
-        class="form-control"
-        id="image"
-        name="image"
-        required
-      />
-      <div class="valid-feedback"></div>
-      <div class="invalid-feedback"></div>
+      <input type="url" class="form-control" id="image" name="image" required />
     </div>
     <div class="mb-2">
       <label for="location" class="form-label">Location</label>
@@ -71,8 +59,6 @@
         max="5"
         required
       />
-      <div class="valid-feedback"></div>
-      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-2">
       <label for="description" class="form-label">Description</label>
