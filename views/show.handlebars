@@ -1,7 +1,7 @@
 <h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-10 mx-auto">
+    <div class="col-12 col-md-10 mx-auto mb-3">
 
       <p class="mb-1">
         <span class="text-secondary">
@@ -17,6 +17,7 @@
           地址：
         </span>
         {{restaurant.location}}
+        {{! 連結google map }}
         <a
           href="{{restaurant.google_map}}"
           class="text-secondary"
@@ -46,14 +47,13 @@
       />
       <a
         href="/restaurants/{{restaurant._id}}/edit"
-        class="text-secondary"
+        class="btn btn-success"
       >Edit</a>
-      <a href="/" class="text-secondary">Back</a>
       <form
         action="./restaurants/{{restaurant._id}}?_method=DELETE"
         method="POST"
         style="display: inline"
-      ><button type="submit">Delete</button></form>
+      ><button class="btn btn-danger" type="submit">Delete</button></form>
     </div>
   </div>
 </div>

@@ -30,7 +30,7 @@ router.get("/search", (req, res) => {
     .then((restaurants) => {
       if (restaurants.length === 0) {
         res.render("notFound", { keyword });
-      } else res.render("index", { restaurants });
+      } else res.render("index", { restaurants, keyword });
     })
     .catch((error) => {
       console.log(error);
