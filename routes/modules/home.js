@@ -28,7 +28,9 @@ router.get("/search", (req, res) => {
   })
     .lean()
     .then((restaurants) => {
-      res.render("index", { restaurants });
+      if (restaurants.length === 0) {
+        res.render("notFound", { keyword });
+      } else res.render("index", { restaurants });
     })
     .catch((error) => {
       console.log(error);
