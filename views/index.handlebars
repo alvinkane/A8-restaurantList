@@ -45,9 +45,7 @@
             </ul>
           </div>
         </div>
-
       </form>
-
     </div>
   </div>
 </div>
@@ -75,17 +73,20 @@
                 <i class="fas fa-star fa-xs">{{this.rating}}</i>
               </span>
             </div>
-            <div class="card-footer p-1 align-self-end">
-              <a
-                href="/restaurants/{{this._id}}/edit"
-                class="text-dark"
-              >Edit</a>
-              <a href="/restaurants/{{this._id}}" class="text-dark">Detail</a>
+            <div class="card-footer d-flex justify-content-end flex-wrap">
+              <a href="/restaurants/{{this._id}}/edit"><button
+                  class="btn btn-link btn-sm"
+                >Edit</button></a>
+              <a href="/restaurants/{{this._id}}"><button
+                  class="btn btn-link btn-sm"
+                >Edit</button></a>
               <form
                 action="./restaurants/{{this._id}}?_method=DELETE"
                 method="POST"
-                style="display: inline"
-              ><button type="submit">Delete</button></form>
+              ><button
+                  class="btn btn-outline-danger btn-sm"
+                  type="submit"
+                >Delete</button></form>
             </div>
           </div>
         {{/each}}
