@@ -13,7 +13,7 @@
 安裝流程：
 1. 打開terminal, clone此專案
     ```
-    git clone https://github.com/alvinkane/A1-restaurantList.git
+    git clone https://github.com/alvinkane/A8-restaurantList.git
     ```
 2. 移到存取的資料夾(A1-restaurantList)
 3. 安裝npm套件
