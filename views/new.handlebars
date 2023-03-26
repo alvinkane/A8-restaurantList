@@ -1,7 +1,9 @@
 <div class="container">
   <form action="/restaurants" method="POST" id="new-form">
     <div class="mb-2">
-      <label for="name" class="form-label">Name</label>
+      <label for="name" class="form-label">Name<span
+          class="text-danger"
+        >*</span></label>
       <input type="text" class="form-control" id="name" name="name" required />
     </div>
     <div class="mb-2">
@@ -9,7 +11,9 @@
       <input type="text" class="form-control" id="name_en" name="name_en" />
     </div>
     <div class="mb-2">
-      <label for="category" class="form-label">Category</label>
+      <label for="category" class="form-label">Category<span
+          class="text-danger"
+        >*</span></label>
       <input
         type="text"
         class="form-control"
@@ -28,7 +32,9 @@
       </datalist>
     </div>
     <div class="mb-2">
-      <label for="image" class="form-label">Image URL</label>
+      <label for="image" class="form-label">Image URL<span
+          class="text-danger"
+        >*</span></label>
       <input type="url" class="form-control" id="image" name="image" required />
     </div>
     <div class="mb-2">
@@ -43,23 +49,25 @@
         id="phone"
         name="phone"
         pattern="[0-9]{2} [0-9]{4} [0-9]{4}"
-        placeholder="02 0000 0000"
+        placeholder="00 0000 0000"
       />
       <div class="invalid-feedback">
-        Please provide valid phone number like 02 0000 0000
+        Please provide valid phone number like 00 0000 0000
       </div>
     </div>
     <div class="mb-2">
       <label for="google_map" class="form-label">Google Map URL</label>
       <input
-        type="text"
+        type="url"
         class="form-control"
         id="google_map"
         name="google_map"
       />
     </div>
     <div class="mb-2">
-      <label for="rating" class="form-label">Rating</label>
+      <label for="rating" class="form-label">Rating<span
+          class="text-danger"
+        >*</span></label>
       <input
         type="number"
         class="form-control"
@@ -67,6 +75,7 @@
         name="rating"
         min="0"
         max="5"
+        step="0.1"
         required
       />
     </div>
@@ -80,7 +89,13 @@
         rows="10"
       ></textarea>
     </div>
-    <button type="submit" id="create-button">Create</button>
+    <button
+      type="submit"
+      class="btn btn-outline-success"
+      id="create-button"
+    >Create</button>
+    {{! 使用type="reset" 可以清除/還原輸入 }}
+    <button type="reset" class="btn btn-outline-danger">Reset</button>
   </form>
 </div>
 
